@@ -1,0 +1,129 @@
+<!--TDF Form type-->
+<!--<mat-card class="mat-card">-->
+<!--  <mat-card-title>User Registration</mat-card-title>-->
+<!--  <mat-card-content>-->
+<!--    <form class="example-form" (ngSubmit)="register()">-->
+<!--      <mat-form-field class="example-full-width" appearance="fill">-->
+<!--        <mat-label>Username</mat-label>-->
+<!--        <input-->
+<!--          [(ngModel)] = "details.name"-->
+<!--          matInput placeholder="Username" required name="name" ngModel>-->
+<!--      </mat-form-field>-->
+
+<!--      <mat-form-field class="example-full-width" appearance="fill">-->
+<!--        <mat-label>Email</mat-label>-->
+<!--        <input-->
+<!--          [(ngModel)] = "details.email"-->
+<!--          matInput placeholder="email" required name="email"   ngModel>-->
+<!--      </mat-form-field>-->
+
+
+<!--      <mat-form-field class="example-full-width" appearance="fill">-->
+<!--        <mat-label>Password</mat-label>-->
+<!--&lt;!&ndash;        <input&ndash;&gt;-->
+<!--&lt;!&ndash;          [(ngModel)] = "details.password"&ndash;&gt;-->
+<!--&lt;!&ndash;          matInput placeholder="Password" required name="password" ngModel>&ndash;&gt;-->
+<!--        <input-->
+<!--          [(ngModel)] = "details.password"-->
+<!--          matInput placeholder="Password" [type]="showPassword ? 'text' : 'password'" required name="password" ngModel>-->
+<!--        <mat-icon matSuffix (click)="togglePasswordVisibility()">-->
+<!--          {{showPassword?'visibility_off':'visibility'}}-->
+<!--        </mat-icon>-->
+<!--      </mat-form-field>-->
+
+<!--      <mat-form-field class="example-full-width" appearance="fill">-->
+<!--        <mat-label>Confirm Password</mat-label>-->
+<!--&lt;!&ndash;        <input&ndash;&gt;-->
+<!--&lt;!&ndash;          [(ngModel)] = "confirmPassword"&ndash;&gt;-->
+<!--&lt;!&ndash;          matInput placeholder="Retype the password" required name="confirmPassword" ngModel>&ndash;&gt;-->
+<!--        <input-->
+<!--          [(ngModel)] = "confirmPassword"-->
+<!--          matInput placeholder="Retype the password" [type]="showPassword ? 'text' : 'password'" required name="confirmPassword" ngModel>-->
+<!--        <mat-icon matSuffix (click)="togglePasswordVisibility()">-->
+<!--          {{showPassword?'visibility_off':'visibility'}}-->
+<!--        </mat-icon>-->
+<!--      </mat-form-field>-->
+
+<!--      <button mat-raised-button color="primary" type="submit">SignUp</button>-->
+<!--      <button mat-raised-button color="accent" style="margin: 5px">Login</button>-->
+<!--    </form>-->
+
+<!--  </mat-card-content>-->
+<!--</mat-card>-->
+
+<!--Reactive Form type-->
+<mat-card class="mat-card">
+  <mat-card-title>User Registration</mat-card-title>
+  <mat-card-content>
+    <form class="example-form" [formGroup]="reactiveform" (ngSubmit)="register()" >
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Username</mat-label>
+        <input
+          matInput placeholder="Username"  formControlName="name"  >
+        <div *ngIf="reactiveform.controls['name'].invalid && (reactiveform.controls['name'].dirty || reactiveform.controls['name'].touched)" class="alert alert-danger">
+          <div *ngIf="reactiveform.controls['name'].errors">
+            Name is not in the format (You must add at least 4 characters)
+          </div>
+        </div>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input
+          matInput placeholder="email" formControlName="email">
+        <div *ngIf="reactiveform.controls['email'].invalid && (reactiveform.controls['email'].dirty || reactiveform.controls['email'].touched)" class="alert alert-danger">
+          <div *ngIf="reactiveform.controls['email'].errors">
+            Email is not in the format
+          </div>
+        </div>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Birth Date</mat-label>
+        <input matInput formControlName="birthDate" [matDatepicker]="picker" >
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker  #picker></mat-datepicker>
+      </mat-form-field>
+
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Password</mat-label>
+        <!--        <input-->
+        <!--          [(ngModel)] = "details.password"-->
+        <!--          matInput placeholder="Password" required name="password" ngModel>-->
+        <input
+          matInput placeholder="Password" [type]="showPassword ? 'text' : 'password'" formControlName="password" >
+        <div *ngIf="reactiveform.controls['password'].invalid && (reactiveform.controls['password'].dirty || reactiveform.controls['password'].touched)" class="alert alert-danger">
+          <div *ngIf="reactiveform.controls['password'].errors">
+            Password is not in the format ( More than 8 characters with letters,numbers and symbols)
+          </div>
+        </div>
+        <mat-icon matSuffix (click)="togglePasswordVisibility()">
+          {{showPassword?'visibility_off':'visibility'}}
+        </mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Confirm Password</mat-label>
+        <!--        <input-->
+        <!--          [(ngModel)] = "confirmPassword"-->
+        <!--          matInput placeholder="Retype the password" required name="confirmPassword" ngModel>-->
+        <input
+          matInput placeholder="Retype the password" [type]="showPassword ? 'text' : 'password'" formControlName="confirmPassword" >
+        <div *ngIf="reactiveform.controls['confirmPassword'].invalid && (reactiveform.controls['confirmPassword'].dirty || reactiveform.controls['confirmPassword'].touched)" class="alert alert-danger">
+          <div *ngIf="reactiveform.controls['confirmPassword'].errors">
+            Confirm Password is not in the format
+          </div>
+        </div>
+        <mat-icon matSuffix (click)="togglePasswordVisibility()">
+          {{showPassword?'visibility_off':'visibility'}}
+        </mat-icon>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">SignUp</button>
+      <button mat-raised-button color="accent" style="margin: 5px">Login</button>
+    </form>
+
+  </mat-card-content>
+</mat-card>
+

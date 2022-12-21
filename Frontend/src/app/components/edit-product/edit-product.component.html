@@ -1,0 +1,68 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <!--    <span>HOME</span>-->
+    <!--    <span><a href="/home">HOME</a></span>-->
+    <span class="spacer"></span>
+    <a mat-button routerLink="/login" (click)="logout()">Logout</a>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-card class="mat-card">
+  <mat-card-title>Edit the Product</mat-card-title>
+  <mat-card-content>
+    <form class="example-form" (ngSubmit)="editProduct()">
+      <mat-form-field appearance="fill">
+        <mat-label>Item</mat-label>
+        <select #items (change)="onESelected(items.value)"
+                matNativeControl required>
+          <option value=""></option>
+          <option value="Lap">Lap</option>
+          <option value="DVD">DVD</option>
+          <option value="TV">TV</option>
+          <option value="WM">WM</option>
+        </select>
+      </mat-form-field>
+
+<!--      <mat-form-field class="example-full-width" appearance="fill">-->
+<!--        <mat-label>Product Name</mat-label>-->
+<!--        <input-->
+<!--          [(ngModel)] = "proDetails.proName"-->
+<!--          matInput placeholder="email" required name="proName" ngModel>-->
+<!--      </mat-form-field>-->
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Price</mat-label>
+        <input
+          [(ngModel)] = "proDetails.price"
+          matInput placeholder="Password" required name="price" ngModel>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Quantity</mat-label>
+        <input
+          [(ngModel)] = "proDetails.quantity"
+          matInput placeholder="Password" required name="quantity" ngModel>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Brand</mat-label>
+        <input
+          [(ngModel)] = "proDetails.brand"
+          matInput placeholder="Password" required name="brand" ngModel>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Type</mat-label>
+        <input
+          [(ngModel)] = "proDetails.type"
+          matInput placeholder="TYpe" required name="type" ngModel>
+      </mat-form-field>
+      <button mat-raised-button color="primary" style="margin: 5px"  type="submit">Edit</button>
+      <button mat-raised-button color="accent"
+              type="reset"
+              ng-click="reset()">Clear
+      </button>
+    </form>
+
+  </mat-card-content>
+</mat-card>

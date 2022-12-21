@@ -1,0 +1,63 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+<!--    &lt;!&ndash;    <span>HOME</span>&ndash;&gt;-->
+    <span>Welcome {{username}}</span>
+
+    <span class="spacer"></span>
+    <a mat-button routerLink="" (click)="logout()">Logout</a>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-icon style="margin-left: 94%;margin-top: 3px" (click)="editUser()">account_circle</mat-icon>
+
+<mat-card id="search-card">
+  <mat-form-field id="search">
+    <input
+      [(ngModel)] = "searchName"
+      type="tel" matInput placeholder="Search" name="searchName" ngModel>
+  </mat-form-field>
+</mat-card>
+
+<button id="add-item-but"mat-raised-button color="accent" (click)="addClick()" >Add item</button>
+<button style="margin-left: 0.5%" id="add-item-but2"mat-raised-button color="accent" (click)="addSearch()" >Search item</button>
+
+<div class ="container">
+  <div class = "card">
+<!--    <h3 class="text-center"> Product List</h3>-->
+    <div class = "card-body">
+      <table class="table table-striped">
+        <thead>
+        <th>Id</th>
+        <th> Product Name</th>
+        <th> Quantity</th>
+        <th> Price </th>
+        <th> Brand</th>
+        <th>Action1</th>
+        <th>Action2</th>
+        </thead>
+        <tbody>
+        <tr *ngFor = "let product of products | slice:start:more" >
+          <ng-container *ngIf=" searchName==null || searchName==product.proName || searchName==product.brand " >
+               <td id="id1"> {{ product.id}}</td>
+               <td> {{ product.proName}}</td>
+               <td> {{ product.quantity}}</td>
+               <td> {{ product.price}}</td>
+               <td> {{ product.brand}}</td>
+
+            <td> <button mat-raised-button color="accent" (click)="navEdit(product.id)" >Edit</button>
+          <td> <button mat-raised-button color="accent" (click)="openDialog(product.id)"  >Delete</button>
+          </td>
+          </ng-container>
+        </tr>
+        </tbody>
+      </table>
+      <div class="more-less-button">
+        <button style="margin-left: 90%" mat-raised-button color="accent" (click)="moreAction()" >More</button>
+        <button style="margin-left: 0.5%" mat-raised-button color="accent" (click)="lessAction()" >Less</button>
+      </div>
+    </div>
+    </div>
+</div>
+
+<a routerLink="/user/view">user-lazy-loading</a>
+

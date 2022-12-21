@@ -1,0 +1,46 @@
+<!--Reactive Form type-->
+<mat-card class="mat-card">
+  <mat-card-title>Edit Profile</mat-card-title>
+  <mat-card-content>
+    <form class="example-form" [formGroup]="reactiveform" (ngSubmit)="editUser()" >
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Username</mat-label>
+        <input
+          matInput placeholder="Username"  formControlName="name"  >
+        <div *ngIf="reactiveform.controls['name'].invalid && (reactiveform.controls['name'].dirty || reactiveform.controls['name'].touched)" class="alert alert-danger">
+          <div *ngIf="reactiveform.controls['name'].errors">
+            Name is not in the format (You must add at least 4 characters)
+          </div>
+        </div>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input
+          matInput placeholder="email" formControlName="email">
+        <div *ngIf="reactiveform.controls['email'].invalid && (reactiveform.controls['email'].dirty || reactiveform.controls['email'].touched)" class="alert alert-danger">
+          <div *ngIf="reactiveform.controls['email'].errors">
+            Email is not in the format
+          </div>
+        </div>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input
+          matInput placeholder="password" formControlName="password">
+        <div *ngIf="reactiveform.controls['password'].invalid && (reactiveform.controls['password'].dirty || reactiveform.controls['password'].touched)" class="alert alert-danger">
+          <div *ngIf="reactiveform.controls['password'].errors">
+            Password is not in the format
+          </div>
+        </div>
+      </mat-form-field>
+
+
+      <button mat-raised-button color="primary" type="submit">Edit</button>
+      <button mat-raised-button color="accent" style="margin: 5px" (click)="onNoClick()">Cancel</button>
+    </form>
+
+  </mat-card-content>
+</mat-card>
+

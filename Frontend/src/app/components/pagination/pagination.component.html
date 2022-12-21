@@ -1,0 +1,88 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <!--    <span>HOME</span>-->
+    <!--    <a href="/home">HOME</a>-->
+    <span class="spacer"></span>
+    <a mat-button routerLink="" (click)="logout()">Logout</a>
+  </mat-toolbar-row>
+</mat-toolbar>
+<form class="example-form" (ngSubmit)="doSearch()">
+  <input id="inputStyle1"
+        [(ngModel)] = "productName"
+        type="text"  placeholder="Enter name" class="form-control" name="productName" >
+  <input id="inputStyle2"
+        [(ngModel)] = "productBrand"
+        type="text"  placeholder="Enter Brand" class="form-control" name="productBrand" >
+  <input id="inputStyle3"
+        [(ngModel)] = "productType"
+        type="text"  placeholder="Enter Type" class="form-control" name="productType" >
+
+
+  <button style="margin-left: 74%;margin-top:2%" mat-raised-button color="accent"  >Search</button>
+<!--  <button style="margin-left: 0.5%" mat-raised-button color="accent" (click)="searchMore()" >More</button>-->
+  <button style="margin-left: 0.5%" mat-raised-button color="accent" type="reset"
+          ng-click="reset()" (click)="clear()" >Clear</button>
+</form>
+
+
+<div class="mat-elevation-z8">
+  <mat-form-field class="frontendFilter">
+    <mat-label>Filter</mat-label>
+    <input matInput placeholder="Filter" (keyup)="filterEvent($event)">
+  </mat-form-field>
+<table mat-table matSort [dataSource]="dataSource">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="proName">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef> Product Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.proName}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="price">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef> Price </th>
+    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="quantity">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef> Quantity </th>
+    <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="brand">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef> Brand </th>
+    <td mat-cell *matCellDef="let element"> {{element.brand}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="type">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef> Type </th>
+    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action1">
+    <th mat-header-cell *matHeaderCellDef> Action1 </th>
+    <td mat-cell *matCellDef="let element"><button (click)="functionEdit(element.id)" mat-raised-button color="primary">Edit</button> </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action2">
+    <th mat-header-cell *matHeaderCellDef> Action2 </th>
+    <td mat-cell *matCellDef="let element"><button (click)="openDialog(element.id)" mat-raised-button color="primary">Delete</button> </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons>
+</mat-paginator>
+</div>

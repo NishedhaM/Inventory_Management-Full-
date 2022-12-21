@@ -1,0 +1,50 @@
+<!--<mat-toolbar>-->
+<!--  <span>LOGIN</span>-->
+<!--</mat-toolbar>-->
+<!--<mat-card class="my-card">-->
+<!--  <mat-card-content>-->
+<!--    <form class="my-form">-->
+<!--      <mat-form-field class="full-width">-->
+<!--        <mat-label>Product Name</mat-label>-->
+<!--        <input  matInput  placeholder="Product name"  name="uname"  required>-->
+<!--      </mat-form-field>-->
+<!--      <mat-form-field class="full-width">-->
+<!--        <mat-label>Password</mat-label>-->
+<!--        <input  matInput  placeholder="Password" name="password">-->
+<!--      </mat-form-field>-->
+<!--    </form>-->
+<!--  </mat-card-content>-->
+<!--  <mat-card-actions>-->
+<!--    <button mat-raised-button (click)="login()" color="primary">LOGIN</button>-->
+<!--  </mat-card-actions>-->
+<!--</mat-card>-->
+
+<mat-card class="mat-card">
+  <mat-card-title>User Login</mat-card-title>
+  <mat-card-content>
+    <form class="example-form" (ngSubmit)="onSubmit()">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Username</mat-label>
+        <input
+          [(ngModel)] = "credentilas.name"
+          matInput placeholder="Username" required name="name" ngModel>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Password</mat-label>
+<!--        <input-->
+<!--          [(ngModel)]="credentilas.password"-->
+<!--          matInput placeholder="Password" required name="password" ngModel>-->
+        <input
+          [(ngModel)]="credentilas.password"
+          matInput [type]="showPassword ? 'text' : 'password'" required name="password" ngModel>
+        <mat-icon matSuffix (click)="togglePasswordVisibility()">
+          {{showPassword?'visibility_off':'visibility'}}
+        </mat-icon>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Login</button>
+      <button mat-raised-button color="accent" style="margin: 5px" (click)="RedirectRegister()">SignUp</button>
+    </form>
+<!--    {{credentilas | json}}-->
+  </mat-card-content>
+</mat-card>
+

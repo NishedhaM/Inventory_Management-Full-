@@ -1,0 +1,14 @@
+
+.mat-card{
+  width: 40%;
+  margin-left: 30%;
+  margin-top: 3%;
+}
+
+.ng-star-inserted{
+  width:100%;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

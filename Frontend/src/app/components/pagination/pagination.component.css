@@ -1,0 +1,41 @@
+.spacer {
+  flex: 1 1 auto;
+}
+table {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 2%;
+  background-color: #959cff;
+}
+
+#inputStyle1{
+  margin-left: 20%;
+  margin-top: 3%;
+  margin-right:5%;
+}
+
+#inputStyle2{
+  margin-left: 5%;
+  margin-top: 3%;
+  margin-right:5%;
+}
+
+#inputStyle3{
+  margin-left: 5%;
+  margin-top: 3%;
+  margin-right:5%;
+}
+
+.mat-elevation-z8{
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 2%;
+  margin-top: 2%;
+  padding-top: 2%;
+  /*background-color: black;*/
+}
+
+.frontendFilter{
+  margin-left: 10%;
+
+}

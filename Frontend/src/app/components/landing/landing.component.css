@@ -1,0 +1,35 @@
+body{
+  /*background-image: image("../../../assets/images/Inventory-Management.jpg");*/
+  background: #959cff;
+
+}
+
+#sect1 {
+  height:650px;
+  color: #fff;
+  background-size: 100% ;
+  background-size: cover;
+}
+
+.container h1{
+  font-size: 40px;
+  margin-left: 400px;
+  padding-top: 60px;
+}
+
+.container img{
+  width: 400px;
+  padding-top: 70px;
+  padding-left: 450px;
+  border-radius: 20px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+
+
+
+
+

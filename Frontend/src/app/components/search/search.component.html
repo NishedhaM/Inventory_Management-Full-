@@ -1,0 +1,76 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <!--    <span>HOME</span>-->
+    <!--    <a href="/home">HOME</a>-->
+    <span class="spacer"></span>
+    <a mat-button routerLink="" (click)="logout()">Logout</a>
+  </mat-toolbar-row>
+</mat-toolbar>
+<form class="example-form" (ngSubmit)="doSearch()">
+  <table>
+    <tr>
+      <td> <input
+        [(ngModel)] = "productName"
+        type="text"  placeholder="Enter name" class="form-control" name="productName" > </td>
+      <td>
+      <td> <input
+        [(ngModel)] = "productBrand"
+        type="text"  placeholder="Enter Brand" class="form-control" name="productBrand" > </td>
+      <td>
+      <td> <input
+        [(ngModel)] = "productType"
+        type="text"  placeholder="Enter Type" class="form-control" name="productType" > </td>
+    </tr>
+  </table>
+
+  <button style="margin-left: 74%;margin-top:2%" mat-raised-button color="accent"  >Search</button>
+  <button style="margin-left: 0.5%" mat-raised-button color="accent" (click)="searchMore()" >More</button>
+  <button style="margin-left: 0.5%" mat-raised-button color="accent" type="reset"
+          ng-click="reset()" (click)="clear()" >Clear</button>
+</form>
+
+<div class ="container">
+  <div class = "card">
+    <!--    <h3 class="text-center"> Product List</h3>-->
+    <div class = "card-body">
+      <table class="table table-striped">
+        <thead>
+        <th>Id</th>
+        <th> Product Name</th>
+        <th> Quantity</th>
+        <th> Price </th>
+        <th> Brand</th>
+        <th> Type</th>
+        <th> Edit</th>
+        <th> Delete</th>
+        </thead>
+        <tbody>
+        <tr *ngFor = "let product of products | slice:start:more" >
+          <ng-container *ngIf=" searchName==null || searchName==product.proName || searchName==product.brand " >
+            <td id="id1"> {{ product.id}}</td>
+            <td> {{ product.proName}}</td>
+            <td> {{ product.quantity}}</td>
+            <td> {{ product.price}}</td>
+            <td> {{ product.brand}}</td>
+            <td> {{ product.type}}</td>
+            <td> <mat-icon aria-hidden="false" aria-label="Example edit icon" fontIcon="edit" (click)="searchEdit(product.id)"></mat-icon></td>
+            <td> <mat-icon aria-hidden="false" aria-label="Example delete icon" fontIcon="delete" (click)="openDialog(product.id)"></mat-icon>
+            </td>
+          </ng-container>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+</div>
+
+<button style="margin-left: 82%;margin-top:1%" mat-raised-button color="accent" (click)="pagination()"  >Pagination</button>
+
+
+
+
+
+
+
